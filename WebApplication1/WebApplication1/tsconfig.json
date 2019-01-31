@@ -1,0 +1,60 @@
+﻿{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "watch": false,
+    "target": "es2015",
+    "module": "es2015",
+    "declaration": false,
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "allowJs": false,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": [ "node_modules/@types/" ],
+    "types": [
+      "jquery",
+      "webpack",
+      "jszip",
+      "tether",
+      "bootstrap-select",
+      "bootstrap-slider",
+      "bootstrap-datepicker",
+      "datatables.net",
+      "datatables.net-select",
+      "datatables.net-buttons",
+      "toastr",
+      "dhtmlxscheduler",
+      "js-cookie"
+    ]
+  },
+  "awesomeTypescriptLoaderOptions": {
+    "doTypeCheck": false,
+    "forkChecker": false,
+    "useBabel": true,
+    "useCache": true,
+    "transpileOnly": true,
+    "babelOptions": {
+      "presets": [ "es2015-loose-native-modules" ]
+    }
+  },
+  "filesGlob": [
+    "./Aurelia/Source/**/*.ts",
+    "./Aurelia/Typings/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".awcache",
+    ".happypack",
+    ".vs",
+    "Deploy",
+    "obj",
+    "wwwroot",
+    "webpack.config.js",
+    "gulpfile.js"
+  ]
+}
