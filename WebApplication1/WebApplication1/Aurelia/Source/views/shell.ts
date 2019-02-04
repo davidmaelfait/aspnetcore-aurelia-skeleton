@@ -11,7 +11,7 @@
 //import * as Cookies from 'js-cookie';
 
 //@inject(SiteApi, BindingEngine, UserService, FetchConfig, AuthorizeStep, GlobalDef, HostingParameters, I18N)
-//export class Shell {
+export class Shell {
 //    api: SiteApi;
 //    router: Router;
 //    user: UserService;
@@ -247,4 +247,4 @@
 
 //        console.log("Configured router");
 //    }
-//}
+}
