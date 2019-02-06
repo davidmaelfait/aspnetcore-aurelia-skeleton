@@ -20,6 +20,11 @@ namespace WebApplication1.Controllers
             return View("Index"); // Index.cshtml wil bootstrap aurelia
         }
 
+        [HttpGet("appsettings")]
+        public IActionResult GetAppSettings()
+        {
+            return Ok( Startup.Configuration["hosting:api"]);
+        }
       
     }
 }

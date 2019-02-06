@@ -1,16 +1,32 @@
-//import { bindable, inject, BindingEngine } from 'aurelia-framework';
-//import { Router, Redirect, RouterConfiguration, RouteConfig, NavModel } from 'aurelia-router';
-//import { FetchConfig, AuthorizeStep } from 'aurelia-auth';
-//import { UserService } from '../services/UserService';
-//import { SiteApi } from './sites/site/siteApi';
-//import { Site } from '../models/database/site';
-//import { HostingParameters } from '../config/hostingConfig';
-//import { GlobalDef } from '../utils/GlobalDefinitions';
-//import { Claim } from '../utils/Utils';
-//import { I18N, BaseI18N } from 'aurelia-i18n';
-//import * as Cookies from 'js-cookie';
-//@inject(SiteApi, BindingEngine, UserService, FetchConfig, AuthorizeStep, GlobalDef, HostingParameters, I18N)
-export class Shell {
-}
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+import { HttpClient } from 'aurelia-fetch-client';
+import { inject } from 'aurelia-framework';
+import { AppSettings } from '../models/appSettings';
+export let Shell = class Shell {
+    constructor() {
+        this.httpClient = new HttpClient();
+        this.httpClient.fetch('appsettings')
+            .then(response => {
+            if (response.ok) {
+                return response.text();
+            }
+        }).then(uri => {
+            this.appSettings = new AppSettings();
+            this.appSettings.Uri = uri.toString();
+        });
+    }
+};
+Shell = __decorate([
+    inject(AppSettings, HttpClient), 
+    __metadata('design:paramtypes', [])
+], Shell);
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpZXdzL3NoZWxsLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLHNFQUFzRTtBQUN0RSxnR0FBZ0c7QUFDaEcsNERBQTREO0FBQzVELHdEQUF3RDtBQUN4RCxpREFBaUQ7QUFDakQsaURBQWlEO0FBQ2pELDhEQUE4RDtBQUM5RCx5REFBeUQ7QUFDekQseUNBQXlDO0FBQ3pDLGdEQUFnRDtBQUNoRCx1Q0FBdUM7QUFFdkMsOEdBQThHO0FBQzlHO0FBNE9BLENBQUM7QUFBQSIsImZpbGUiOiJ2aWV3cy9zaGVsbC5qcyIsInNvdXJjZVJvb3QiOiJBdXJlbGlhL1NvdXJjZS8ifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpZXdzL3NoZWxsLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7OztPQUFPLEVBQUUsVUFBVSxFQUFFLE1BQU0sc0JBQXNCO09BQzFDLEVBQUUsTUFBTSxFQUFFLE1BQU0sbUJBQW1CO09BQ25DLEVBQUUsV0FBVyxFQUFFLE1BQU0sdUJBQXVCO0FBR25EO0lBS0k7UUFFSSxJQUFJLENBQUMsVUFBVSxHQUFHLElBQUksVUFBVSxFQUFFLENBQUM7UUFFbkMsSUFBSSxDQUFDLFVBQVUsQ0FBQyxLQUFLLENBQUMsYUFBYSxDQUFDO2FBQy9CLElBQUksQ0FBQyxRQUFRO1lBQ1YsRUFBRSxDQUFDLENBQUMsUUFBUSxDQUFDLEVBQUUsQ0FBQyxDQUFDLENBQUM7Z0JBRWQsTUFBTSxDQUFDLFFBQVEsQ0FBQyxJQUFJLEVBQUUsQ0FBQztZQUUzQixDQUFDO1FBQ0wsQ0FBQyxDQUFDLENBQUMsSUFBSSxDQUFDLEdBQUc7WUFDUCxJQUFJLENBQUMsV0FBVyxHQUFHLElBQUksV0FBVyxFQUFFLENBQUM7WUFDckMsSUFBSSxDQUFDLFdBQVcsQ0FBQyxHQUFHLEdBQUcsR0FBRyxDQUFDLFFBQVEsRUFBRSxDQUFDO1FBQzFDLENBQUMsQ0FBQyxDQUFDO0lBQ1gsQ0FBQztBQUdMLENBQUM7QUF4QkQ7SUFBQyxNQUFNLENBQUMsV0FBVyxFQUFFLFVBQVUsQ0FBQzs7U0FBQTtBQXdCL0IiLCJmaWxlIjoidmlld3Mvc2hlbGwuanMiLCJzb3VyY2VSb290IjoiQXVyZWxpYS9Tb3VyY2UvIn0=

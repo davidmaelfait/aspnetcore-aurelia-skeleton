@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Aurelia\Source\models\appSettings.ts" />
     <None Remove="Aurelia\Source\views\shell.ts" />
   </ItemGroup>
 
@@ -18,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="Aurelia\Source\models\appSettings.ts" />
     <TypeScriptCompile Include="Aurelia\Source\views\shell.ts" />
   </ItemGroup>
 
