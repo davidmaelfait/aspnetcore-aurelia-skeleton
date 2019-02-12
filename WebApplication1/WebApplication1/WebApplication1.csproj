@@ -6,7 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Aurelia\Source\models\appSettings.ts" />
+    <None Remove="Aurelia\Source\infrastructure\ApiHttpClient.ts" />
+    <None Remove="Aurelia\Source\models\database\product.ts" />
+    <None Remove="Aurelia\Source\models\Hosting.ts" />
+    <None Remove="Aurelia\Source\views\product\list\list.ts" />
+    <None Remove="Aurelia\Source\views\product\product.ts" />
+    <None Remove="Aurelia\Source\views\product\productApi.ts" />
     <None Remove="Aurelia\Source\views\shell.ts" />
   </ItemGroup>
 
@@ -19,7 +24,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="Aurelia\Source\models\appSettings.ts" />
+    <TypeScriptCompile Include="Aurelia\Source\infrastructure\ApiHttpClient.ts" />
+    <TypeScriptCompile Include="Aurelia\Source\models\database\product.ts" />
+    <TypeScriptCompile Include="Aurelia\Source\models\Hosting.ts" />
+    <TypeScriptCompile Include="Aurelia\Source\views\product\list\list.ts" />
+    <TypeScriptCompile Include="Aurelia\Source\views\product\product.ts" />
+    <TypeScriptCompile Include="Aurelia\Source\views\product\productApi.ts" />
     <TypeScriptCompile Include="Aurelia\Source\views\shell.ts" />
   </ItemGroup>
 

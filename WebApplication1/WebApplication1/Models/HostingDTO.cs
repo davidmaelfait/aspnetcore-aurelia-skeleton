@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace WebApplication1.Models
 {
-    public class AppSettingsDTO
+    public class HostingDTO
     {
-        public string Uri { get; set; }
+        public string Api { get; set; }
     }
 }

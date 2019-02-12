@@ -48,7 +48,6 @@ import "svg-pan-zoom/dist/svg-pan-zoom.js";
 export function configure(aurelia) {
     return __awaiter(this, void 0, void 0, function* () {
         // Get config
-        // const hosting = aurelia.container.get(HostingParameters);
         // const auth = new AuthConfig(hosting);
         aurelia.use
             .standardConfiguration()

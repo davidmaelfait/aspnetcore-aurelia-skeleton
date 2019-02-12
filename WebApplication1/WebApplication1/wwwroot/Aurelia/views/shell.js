@@ -1,32 +1,43 @@
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator.throw(value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments)).next());
+    });
 };
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-import { HttpClient } from 'aurelia-fetch-client';
-import { inject } from 'aurelia-framework';
-import { AppSettings } from '../models/appSettings';
-export let Shell = class Shell {
+//@inject(Hosting)
+export class Shell {
     constructor() {
-        this.httpClient = new HttpClient();
-        this.httpClient.fetch('appsettings')
-            .then(response => {
-            if (response.ok) {
-                return response.text();
-            }
-        }).then(uri => {
-            this.appSettings = new AppSettings();
-            this.appSettings.Uri = uri.toString();
+    }
+    activate() {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log('activated');
         });
     }
-};
-Shell = __decorate([
-    inject(AppSettings, HttpClient), 
-    __metadata('design:paramtypes', [])
-], Shell);
+    attached() {
+        console.log('attached');
+    }
+    deactivate() {
+        console.log('deactivate');
+    }
+    configureRouter(config, router) {
+        this.router = router;
+        config.title = "Sportstore";
+        let routes = [
+            {
+                route: '',
+                redirect: '/products'
+            },
+            {
+                route: 'products',
+                name: 'products',
+                title: 'products',
+                moduleId: './product/product'
+            }
+        ];
+        config.map(routes);
+    }
+}
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpZXdzL3NoZWxsLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7OztPQUFPLEVBQUUsVUFBVSxFQUFFLE1BQU0sc0JBQXNCO09BQzFDLEVBQUUsTUFBTSxFQUFFLE1BQU0sbUJBQW1CO09BQ25DLEVBQUUsV0FBVyxFQUFFLE1BQU0sdUJBQXVCO0FBR25EO0lBS0k7UUFFSSxJQUFJLENBQUMsVUFBVSxHQUFHLElBQUksVUFBVSxFQUFFLENBQUM7UUFFbkMsSUFBSSxDQUFDLFVBQVUsQ0FBQyxLQUFLLENBQUMsYUFBYSxDQUFDO2FBQy9CLElBQUksQ0FBQyxRQUFRO1lBQ1YsRUFBRSxDQUFDLENBQUMsUUFBUSxDQUFDLEVBQUUsQ0FBQyxDQUFDLENBQUM7Z0JBRWQsTUFBTSxDQUFDLFFBQVEsQ0FBQyxJQUFJLEVBQUUsQ0FBQztZQUUzQixDQUFDO1FBQ0wsQ0FBQyxDQUFDLENBQUMsSUFBSSxDQUFDLEdBQUc7WUFDUCxJQUFJLENBQUMsV0FBVyxHQUFHLElBQUksV0FBVyxFQUFFLENBQUM7WUFDckMsSUFBSSxDQUFDLFdBQVcsQ0FBQyxHQUFHLEdBQUcsR0FBRyxDQUFDLFFBQVEsRUFBRSxDQUFDO1FBQzFDLENBQUMsQ0FBQyxDQUFDO0lBQ1gsQ0FBQztBQUdMLENBQUM7QUF4QkQ7SUFBQyxNQUFNLENBQUMsV0FBVyxFQUFFLFVBQVUsQ0FBQzs7U0FBQTtBQXdCL0IiLCJmaWxlIjoidmlld3Mvc2hlbGwuanMiLCJzb3VyY2VSb290IjoiQXVyZWxpYS9Tb3VyY2UvIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpZXdzL3NoZWxsLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7O0FBS0Esa0JBQWtCO0FBQ2xCO0lBSUk7SUFHQSxDQUFDO0lBRUssUUFBUTs7WUFDVixPQUFPLENBQUMsR0FBRyxDQUFDLFdBQVcsQ0FBQyxDQUFDO1FBQzdCLENBQUM7S0FBQTtJQUVELFFBQVE7UUFDSixPQUFPLENBQUMsR0FBRyxDQUFDLFVBQVUsQ0FBQyxDQUFDO0lBQzVCLENBQUM7SUFFRCxVQUFVO1FBQ04sT0FBTyxDQUFDLEdBQUcsQ0FBQyxZQUFZLENBQUMsQ0FBQztJQUM5QixDQUFDO0lBRUQsZUFBZSxDQUFDLE1BQTJCLEVBQUUsTUFBYztRQUN2RCxJQUFJLENBQUMsTUFBTSxHQUFHLE1BQU0sQ0FBQztRQUVyQixNQUFNLENBQUMsS0FBSyxHQUFHLFlBQVksQ0FBQztRQUU1QixJQUFJLE1BQU0sR0FBRztZQUNUO2dCQUNJLEtBQUssRUFBRSxFQUFFO2dCQUNULFFBQVEsRUFBRSxXQUFXO2FBQ3hCO1lBQ0Q7Z0JBQ0ksS0FBSyxFQUFFLFVBQVU7Z0JBQ2pCLElBQUksRUFBRSxVQUFVO2dCQUNoQixLQUFLLEVBQUUsVUFBVTtnQkFDakIsUUFBUSxFQUFFLG1CQUFtQjthQUNoQztTQUNKLENBQUM7UUFDRixNQUFNLENBQUMsR0FBRyxDQUFDLE1BQU0sQ0FBQyxDQUFDO0lBQ3ZCLENBQUM7QUFFTCxDQUFDO0FBQUEiLCJmaWxlIjoidmlld3Mvc2hlbGwuanMiLCJzb3VyY2VSb290IjoiQXVyZWxpYS9Tb3VyY2UvIn0=

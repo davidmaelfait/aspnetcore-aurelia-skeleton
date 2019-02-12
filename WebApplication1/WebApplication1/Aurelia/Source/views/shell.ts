@@ -1,29 +1,48 @@
-﻿import { HttpClient } from 'aurelia-fetch-client';
+﻿
 import { inject } from 'aurelia-framework';
-import { AppSettings } from '../models/appSettings';
 
-@inject(AppSettings, HttpClient)
+import { Router, RouterConfiguration } from 'aurelia-router';
+
+//@inject(Hosting)
 export class Shell {
 
-    httpClient: HttpClient;
-    appSettings: AppSettings;
+    router: Router;
 
     constructor() {
 
-        this.httpClient = new HttpClient();
-
-        this.httpClient.fetch('appsettings')
-            .then(response => {
-                if (response.ok) {
-                
-                    return response.text();
-
-                }
-            }).then(uri => {
-                this.appSettings = new AppSettings();
-                this.appSettings.Uri = uri.toString();
-            });
+       
     }
 
+    async activate() {
+        console.log('activated');
+    }
+
+    attached() {
+        console.log('attached');
+    }
+
+    deactivate() {
+        console.log('deactivate');
+    }
+
+    configureRouter(config: RouterConfiguration, router: Router) {
+        this.router = router;
+
+        config.title = "Sportstore";
+
+        let routes = [
+            {
+                route: '',
+                redirect: '/products'
+            },
+            {
+                route: 'products',
+                name: 'products',
+                title: 'products',
+                moduleId: './product/product'
+            }
+        ];
+        config.map(routes);
+    }
     
 }

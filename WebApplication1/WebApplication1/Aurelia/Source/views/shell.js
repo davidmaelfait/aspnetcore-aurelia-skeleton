@@ -1,32 +1,42 @@
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
 };
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-import { HttpClient } from 'aurelia-fetch-client';
-import { inject } from 'aurelia-framework';
-import { AppSettings } from '../models/appSettings';
-let Shell = class Shell {
+//@inject(Hosting)
+export class Shell {
     constructor() {
-        this.httpClient = new HttpClient();
-        this.httpClient.fetch('appsettings')
-            .then(response => {
-            if (response.ok) {
-                return response.text();
-            }
-        }).then(uri => {
-            this.appSettings = new AppSettings();
-            this.appSettings.Uri = uri.toString();
+    }
+    activate() {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log('activated');
         });
     }
-};
-Shell = __decorate([
-    inject(AppSettings, HttpClient),
-    __metadata("design:paramtypes", [])
-], Shell);
-export { Shell };
+    attached() {
+        console.log('attached');
+    }
+    deactivate() {
+        console.log('deactivate');
+    }
+    configureRouter(config, router) {
+        this.router = router;
+        config.title = "Sportstore";
+        let routes = [
+            {
+                route: '',
+                redirect: '/products'
+            },
+            {
+                route: 'products',
+                name: 'products',
+                title: 'products',
+                moduleId: './product/product'
+            }
+        ];
+        config.map(routes);
+    }
+}
 //# sourceMappingURL=shell.js.map

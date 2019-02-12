@@ -46,7 +46,6 @@ import * as Cookies from 'js-Cookie';
  */
 export async function configure(aurelia: Aurelia) {
     // Get config
-   // const hosting = aurelia.container.get(HostingParameters);
    // const auth = new AuthConfig(hosting);
     aurelia.use
         .standardConfiguration()
