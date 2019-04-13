@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebApi.Models;
@@ -32,7 +33,22 @@ namespace WebApi
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IProductRepository, FakeProductRepository>();
+            services.AddDbContext<ApplicationDbContext>(options =>
+               options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
+
+            services.AddTransient<IProductRepository, EFProductRepository>();
+
+            services
+             .AddCors(options =>
+             {
+                 options.AddPolicy("CorsPolicy",
+                     builder => builder.AllowAnyOrigin()
+                     .AllowAnyMethod()
+                     .AllowAnyHeader()
+                     .AllowCredentials()
+                 );
+             });
+
             services.AddMvc();
         }
 
@@ -45,7 +61,7 @@ namespace WebApi
                 app.UseDatabaseErrorPage();
             }
 
-
+            app.UseCors("CorsPolicy");
 
             //app.Run(async (context) =>
             //{
@@ -55,6 +71,8 @@ namespace WebApi
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseMvc();
+
+            SeedData.EnsurePopulated(app);
         }
     }
 }

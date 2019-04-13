@@ -15,8 +15,10 @@ import "moment/min/moment.min.js";
 import "font-awesome/css/font-awesome.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
-import "bootstrap-datepicker/dist/js/bootstrap-datepicker.js";
-import "bootstrap-datepicker/dist/css/bootstrap-datepicker.css";
+//import "bootstrap-datepicker/dist/js/bootstrap-datepicker.js";
+//import "bootstrap-datepicker/dist/css/bootstrap-datepicker.css";
+import "eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css";
+import "aurelia-bootstrap-datetimepicker/dist/amd/bootstrap-datetimepicker-bs4.css";
 //import 'eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js'; Not Compatible with 4.0.0
 import "bootstrap-colorpicker/dist/js/bootstrap-colorpicker.js";
 import "bootstrap-colorpicker/dist/css/bootstrap-colorpicker.css";
@@ -56,6 +58,16 @@ export function configure(aurelia) {
             //        // use config
             //        baseconfig.configure(auth.config);
             //    })
+            .plugin('aurelia-bootstrap-datetimepicker', config => {
+            // extra attributes, with config.extra
+            // config.extra.iconBase = 'glyphicon';
+            // config.extra.withDateIcon = true;
+            // or any picker options, with config.options
+            //config.options.allowInputToggle = true;
+            config.extra.bootstrapVersion = 3;
+            // you can also change the button class, default is shown below
+            //config.extra.buttonClass = 'btn btn-outline-secondary';
+        })
             .plugin("aurelia-validation");
         //.plugin("aurelia-i18n",
         //    (instance) => {

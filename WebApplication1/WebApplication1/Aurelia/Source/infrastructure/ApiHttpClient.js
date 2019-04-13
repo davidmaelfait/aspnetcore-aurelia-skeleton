@@ -9,48 +9,49 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { HttpClient } from "aurelia-fetch-client";
 import { inject } from 'aurelia-framework';
-import { Hosting } from '../models/Hosting';
+//import { Hosting } from '../models/Hosting';
+import { GlobalDef } from '../utils/GlobalDef';
 let ApiHttpClient = class ApiHttpClient extends HttpClient {
-    constructor(hosting) {
+    constructor(globalDef) {
         super();
-        this.hosting = hosting;
+        this.globalDef = globalDef;
     }
     fetch(uri) {
         return this.getUri()
             .then(baseuri => {
-            this.configure(config => {
+            super.configure(config => {
                 config.withBaseUrl(baseuri + '/');
             });
-            return this.fetch(uri)
+            return super.fetch(uri)
                 .then(response => {
                 if (response.ok) {
-                    return response.json();
+                    return response;
                 }
             });
         });
     }
     getUri() {
         return new Promise((resolve, reject) => {
-            if (this.hosting.api == undefined) {
-                this.fetch('hosting')
+            if (this.globalDef.hosting.api == undefined) {
+                super.fetch('hosting')
                     .then(response => {
                     if (response.ok) {
                         return response.json();
                     }
                 })
                     .then(hosting => {
-                    this.hosting = hosting;
-                    return hosting.api;
+                    this.globalDef.hosting = hosting;
+                    resolve(hosting.api);
                 });
             }
             else
-                return this.hosting.api;
+                resolve(this.globalDef.hosting.api);
         });
     }
 };
 ApiHttpClient = __decorate([
-    inject(Hosting),
-    __metadata("design:paramtypes", [Hosting])
+    inject(GlobalDef),
+    __metadata("design:paramtypes", [GlobalDef])
 ], ApiHttpClient);
 export { ApiHttpClient };
 //# sourceMappingURL=ApiHttpClient.js.map

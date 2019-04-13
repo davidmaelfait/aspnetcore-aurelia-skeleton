@@ -1,34 +1,38 @@
 ﻿import { HttpClient } from "aurelia-fetch-client";
-import { inject } from 'aurelia-framework';
-import { Hosting } from '../models/Hosting';
+import { inject, CompositionTransaction } from 'aurelia-framework';
+//import { Hosting } from '../models/Hosting';
+import { GlobalDef } from '../utils/GlobalDef';
+import { Hosting } from "../models/Hosting";
 
-@inject(Hosting)
+
+@inject(GlobalDef)
 export class ApiHttpClient extends HttpClient {
 
-    hosting: Hosting;
+    globalDef: GlobalDef;
 
-    constructor(hosting: Hosting) {
+    constructor(globalDef: GlobalDef) {
         super();
 
-        this.hosting = hosting;
+        this.globalDef = globalDef;
     }
 
-   
+
 
     public fetch(uri: string): Promise<Response> {
         return this.getUri()
             .then(baseuri => {
-                this.configure(config => {
+                super.configure(config => {
                     config.withBaseUrl(baseuri + '/');
                 });
 
-              return this.fetch(uri)
+                return super.fetch(uri)
                     .then(response => {
                         if (response.ok) {
 
-                            return response.json();
+                            return response;
                         }
                     });
+
             });
     }
 
@@ -36,8 +40,8 @@ export class ApiHttpClient extends HttpClient {
 
         return new Promise((resolve, reject) => {
 
-            if (this.hosting.api == undefined) {
-                this.fetch('hosting')
+            if (this.globalDef.hosting.api == undefined) {
+                super.fetch('hosting')
                     .then(response => {
                         if (response.ok) {
 
@@ -46,12 +50,12 @@ export class ApiHttpClient extends HttpClient {
 
                     })
                     .then(hosting => {
-                        this.hosting = hosting;
-                        return hosting.api;
+                        this.globalDef.hosting = hosting;
+                       resolve(hosting.api);
                     })
             }
             else
-                return this.hosting.api;
+                resolve(this.globalDef.hosting.api);
         });
     }
 

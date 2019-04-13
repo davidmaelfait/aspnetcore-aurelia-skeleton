@@ -16,8 +16,11 @@ export class ProductApi {
 
         return this.httpClient.fetch('products')
             .then(response => {
-                return response.json();
-                });
+                var result = response.json();
+                console.log(result);
+                return result;
+            });
+           // .then(prod => { return prod; });
     }
 
 }

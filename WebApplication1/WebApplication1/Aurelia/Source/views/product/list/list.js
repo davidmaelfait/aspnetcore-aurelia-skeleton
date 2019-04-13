@@ -17,6 +17,14 @@ let List = class List {
         this.api.getProducts().then(products => {
             this.products = products;
         });
+        //https://github.com/ghiscoding/Aurelia-Bootstrap-Plugins/tree/master/aurelia-bootstrap-datetimepicker
+        // $('#datetimepicker1').datetimepicker();
+    }
+    attached() {
+        // $('#product-table').DataTable().
+    }
+    create() {
+        var d = $("#datetimepicker_activeFrom").find("input").val();
     }
 };
 List = __decorate([

@@ -1,0 +1,1 @@
+C:\DOCUMENTS\David\LearningProjects\aspnetcore-aurelia-skeleton\WebApplication1\WebApplication1\node_modules\.bin\webpack --watch

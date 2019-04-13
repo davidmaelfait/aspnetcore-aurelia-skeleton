@@ -8,24 +8,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 import { inject } from 'aurelia-framework';
-import { ApiHttpClient } from '../../infrastructure/ApiHttpClient';
-let ProductApi = class ProductApi {
-    constructor(httpClient) {
-        this.httpClient = httpClient;
-    }
-    getProducts() {
-        return this.httpClient.fetch('products')
-            .then(response => {
-            var result = response.json();
-            console.log(result);
-            return result;
-        });
-        // .then(prod => { return prod; });
+import { Hosting } from '../models/Hosting';
+let GlobalDef = class GlobalDef {
+    constructor(hosting) {
+        this.hosting = hosting;
     }
 };
-ProductApi = __decorate([
-    inject(ApiHttpClient),
-    __metadata("design:paramtypes", [ApiHttpClient])
-], ProductApi);
-export { ProductApi };
-//# sourceMappingURL=productApi.js.map
+GlobalDef = __decorate([
+    inject(Hosting),
+    __metadata("design:paramtypes", [Hosting])
+], GlobalDef);
+export { GlobalDef };
+//# sourceMappingURL=GlobalDef.js.map
