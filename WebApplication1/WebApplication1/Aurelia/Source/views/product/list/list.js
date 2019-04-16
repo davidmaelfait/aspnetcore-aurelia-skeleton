@@ -18,13 +18,16 @@ let List = class List {
             this.products = products;
         });
         //https://github.com/ghiscoding/Aurelia-Bootstrap-Plugins/tree/master/aurelia-bootstrap-datetimepicker
-        // $('#datetimepicker1').datetimepicker();
     }
     attached() {
         // $('#product-table').DataTable().
+        //$('#datetimepicker1').datetimepicker();
+        //$('#datetimepicker1').data("DateTimePicker")
+        this.datum = new Date(Date.now());
     }
     create() {
-        var d = $("#datetimepicker_activeFrom").find("input").val();
+        var d = this.datum; //$("#datetimepicker_activeFrom").find("input").val();
+        console.log(d);
     }
 };
 List = __decorate([

@@ -60,13 +60,17 @@ export function configure(aurelia) {
             //    })
             .plugin('aurelia-bootstrap-datetimepicker', config => {
             // extra attributes, with config.extra
-            // config.extra.iconBase = 'glyphicon';
-            // config.extra.withDateIcon = true;
+            //config.extra.buttonClass = 'btn btn-outline-secondary';
+            config.extra.bootstrapVersion = 3;
+            config.extra.iconBase = 'font-awesome';
+            config.extra.withDateIcon = true;
             // or any picker options, with config.options
             //config.options.allowInputToggle = true;
-            config.extra.bootstrapVersion = 3;
+            //config.options.collapse = false;
+            config.options.format = 'DD/MM/YYYY HH:mm';
+            config.options.keepOpen = false;
+            config.options.ignoreReadonly = true;
             // you can also change the button class, default is shown below
-            //config.extra.buttonClass = 'btn btn-outline-secondary';
         })
             .plugin("aurelia-validation");
         //.plugin("aurelia-i18n",

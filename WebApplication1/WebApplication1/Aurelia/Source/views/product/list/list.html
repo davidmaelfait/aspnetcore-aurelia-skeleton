@@ -17,12 +17,25 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6 form-group">
-                <abp-datetime-picker id="datetimepicker_activeFrom" class="input-group date" value.bind="datum" icon-base="font-awesome" options.bind="{ format:'DD-MM-YYYY hh:mm' }" with-date-icon="true"></abp-datetime-picker>
+                <abp-datetime-picker id="datetimepicker_activeFrom" readonly="readonly" class="input-group date"  model.bind="datum"  ></abp-datetime-picker>
             </div>
         </div>
+        <!--<div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" />
+                               
+                        <span class="input-group-addon" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                            <span class="fa fa-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>-->
         <div class="row">
             <label class="col-12 col-sm-4 col-md-4 col-lg-3 col-xl-3 col-form-label">${datum}</label>
-            <button class="btn btn-prim btn-lg pull-right" click.delegate="create()" >Finish</button>
+            <button class="btn btn-prim btn-lg pull-right" click.delegate="create()">Finish</button>
         </div>
     </div>
         <!--<div class="row">
